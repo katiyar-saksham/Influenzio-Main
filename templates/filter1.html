@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Filter</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'League Spartan', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #090014;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: auto;
+            padding: 0rem 4rem;
+        }
+
+        .header {
+            width: 100%;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: none;
+            border-radius: 0.5rem;
+        }
+
+        .navbar label {
+            font-size: 0.875rem;
+            color: white;
+            margin-right: 0.5rem;
+        }
+
+        .filter-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .dropdown {
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-select {
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            border: none;
+            font-size: 0.875rem;
+            background-color: #391863;
+            color: white;
+        }
+
+        .followers-input {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-field {
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            border: none;
+            font-size: 0.875rem;
+            background-color: #391863;
+            color: white;
+        }
+
+
+        .gradient-border-button {}
+
+        .gradient-border-button:hover {}
+
+
+
+        .find-job-button {
+            font-size: 15px;
+            width: 8rem;
+            font-weight: 300;
+            text-transform: capitalize;
+            padding: 15px 20px;
+            background: transparent;
+            color: white;
+            border-radius: 50px;
+            position: relative;
+            display: inline-block;
+            border: 1px solid transparent;
+            background-image: linear-gradient(#000, #000),
+                /* Inner button background */
+                linear-gradient(90deg, #8d73ff, #a66cc3);
+            /* Gradient border */
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow:
+                0 0 10px 1px rgba(0, 0, 0, 0.2),
+                0 0 10px 1px rgba(141, 115, 255, 0.242),
+                0 0 10px 1px rgba(195, 108, 191, 0.227);
+            transition: all 0.3s ease;
+        }
+
+        /* .find-job-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 2rem;
+            background: linear-gradient(90deg, #8e73ff, #ff00ff);
+            padding: 0.15rem;
+            -webkit-mask:
+                linear-gradient(white, white) content-box,
+                linear-gradient(white, white);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            mask-linear-gradient(white, white) content-box,
+            linear-gradient(white, white);
+
+        } */
+
+        .find-job-button:hover {
+            box-shadow:
+                0 0 10px 1px rgba(102, 102, 102, 0.593),
+                0 0 10px 1px rgba(47, 0, 255, 0.729),
+                0 0 10px 1px rgba(255, 0, 242, 0.651);
+        }
+
+        .card {
+            text-transform: capitalize;
+            padding: 2rem;
+            margin: 2rem;
+            border: #1a003a 1px solid;
+            border-radius: 10px;
+            background-color: #1a003a;
+        }
+        .card h3{
+            margin-top: 1rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p{
+            text-transform: capitalize;
+        }
+
+        #results {
+            margin-top: 1rem;
+            /* border: 1px solid white; */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #chat {
+            margin:1rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: white;
+            background: black;
+            border: none;
+            border-radius: 2rem;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        #chat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 2rem;
+            background: linear-gradient(90deg, #8e73ff, #ff00ff);
+            padding: 0.15rem;
+            -webkit-mask:
+                linear-gradient(white, white) content-box,
+                linear-gradient(white, white);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            mask-linear-gradient(white, white) content-box,
+            linear-gradient(white, white);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="{{url_for('static',filename='logo.svg')}}" alt="logo">
+        </div>
+
+        <div class="filter-container border_default">
+            <div class="hi">
+                <label for="age" class="search-label">Age:</label>
+                <select id="age" class="dropdown-select ">
+                    <option value="">Select Age</option>
+                    <option value="18-24">18-24</option>
+                    <option value="25-34">25-34</option>
+                    <option value="35-44">35-44</option>
+                    <option value="45+">45+</option>
+                </select>
+            </div>
+
+            <div class="hi">
+                <label for="gender" class="search-label">Gender:</label>
+                <select id="gender" class="dropdown-select ">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="hi">
+                <label for="country" class="search-label">Country:</label>
+                <select id="country" class="dropdown-select">
+                    <option value="">Select Country</option>
+                    <option value="USA">USA</option>
+                    <option value="UK">UK</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                </select>
+            </div>
+
+            <div class="hi">
+                <label for="genre" class="search-label">Genre:</label>
+                <select id="genre" class="dropdown-select">
+                    <option value="">Select Genre</option>
+                    <option value="lifestyle">Lifestyle</option>
+                    <option value="gaming">Gaming</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="travel">Travel</option>
+                </select>
+            </div>
+
+            <div class="followers-input">
+                <label for="followers">Followers:</label>
+                <input type="number" id="followers" class="input-field dropdown-select"
+                    placeholder="Number of followers" min="0">
+            </div>
+
+            <button id="filterBtn" class="gradient-button find-job-button ">Filter</button>
+        </div>
+    </div>
+    <div id="results" class="card-container">
+        
+    </div>
+
+    <script>
+        const influencers = [
+            { name: 'carry minati', genre: 'lifestyle', age: '18-24', country: 'USA', gender: 'male', followers: 15000 },
+            { name: 'triggerd insaan', genre: 'gaming', age: '25-34', country: 'UK', gender: 'male', followers: 25000 },
+            { name: 'parul', genre: 'fashion', age: '35-44', country: 'Canada', gender: 'female', followers: 30000 },
+            { name: 'ujjwal', genre: 'travel', age: '45+', country: 'Australia', gender: 'male', followers: 20000 },
+            { name: 'prohit', genre: 'lifestyle', age: '18-24', country: 'USA', gender: 'female', followers: 15030 },
+            { name: 'apoorv', genre: 'gaming', age: '25-34', country: 'UK', gender: 'male', followers: 25000 },
+            { name: 'saksham', genre: 'fashion', age: '35-44', country: 'Canada', gender: 'male', followers: 30000 },
+            { name: 'divya verma', genre: 'travel', age: '45+', country: 'Australia', gender: 'male', followers: 20000 },
+            { name: 'akshat', genre: 'lifestyle', age: '18-24', country: 'USA', gender: 'female', followers: 14000 },
+            { name: 'mridul', genre: 'gaming', age: '25-34', country: 'UK', gender: 'male', followers: 25000 },
+            { name: 'divyanshi', genre: 'fashion', age: '35-44', country: 'Canada', gender: 'female', followers: 30000 },
+            { name: 'paruls', genre: 'travel', age: '45+', country: 'Australia', gender: 'male', followers: 20000 },
+            { name: 'aksham', genre: 'lifestyle', age: '18-24', country: 'USA', gender: 'male', followers: 15050 },
+            { name: 'triggerd insaan', genre: 'gaming', age: '25-34', country: 'UK', gender: 'male', followers: 25000 },
+            { name: 'parul', genre: 'fashion', age: '35-44', country: 'Canada', gender: 'female', followers: 30000 },
+            { name: 'ujjwal', genre: 'travel', age: '45+', country: 'Australia', gender: 'male', followers: 20000 },
+            { name: 'prohit', genre: 'lifestyle', age: '18-24', country: 'USA', gender: 'female', followers: 16000 },
+            { name: 'apoorv', genre: 'gaming', age: '25-34', country: 'UK', gender: 'male', followers: 25000 },
+            { name: 'scarry minati', genre: 'fashion', age: '35 - 44', country: 'Canada', gender: 'female', followers: 30000 },
+            { name: 'divya verma', genre: 'travel', age: '45+', country: 'Australia', gender: 'male', followers: 20000 },
+            { name: 'akshat', genre: 'lifestyle', age: '18-24', country: 'USA', gender: 'female', followers: 17000 },
+            { name: 'mridul', genre: 'gaming', age: '25-34', country: 'UK', gender: 'male', followers: 25000 },
+            { name: 'divyanshi', genre: 'fashion', age: '35-44', country: 'Canada', gender: 'female', followers: 30000 },
+            { name: 'paruls', genre: 'travel', age: '45+', country: 'Australia', gender: 'male', followers: 20000 },
+        ];
+
+        document.getElementById('filterBtn').addEventListener('click', () => {
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const country = document.getElementById('country').value;
+            const genre = document.getElementById('genre').value;
+
+            const filteredInfluencers = influencers.filter(influencer => {
+                return (!age || influencer.age === age) &&
+                    (!gender || influencer.gender === gender) &&
+                    (!country || influencer.country === country) &&
+                    (!genre || influencer.genre === genre);
+            });
+
+            displayResults(filteredInfluencers);
+        });
+
+        function displayResults(influencers) {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            if (influencers.length === 0) {
+                resultsContainer.innerHTML = '<p>No influencers found</p>';
+                return;
+            }
+
+            influencers.forEach(influencer => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                const name = document.createElement('h3');
+                name.textContent = influencer.name;
+
+                const genre = document.createElement('p');
+                genre.textContent = `Genre: ${influencer.genre}`;
+
+                const age = document.createElement('p');
+                age.textContent = `Age: ${influencer.age}`;
+
+                const country = document.createElement('p');
+                country.textContent = `Country: ${influencer.country}`;
+
+                const followers = document.createElement('p');
+                followers.textContent = `Followers: ${influencer.followers}`;
+
+                const button = document.createElement('button');
+                button.textContent = 'lets chat';
+                button.id = 'chat';
+                button.addEventListener('click', () => {
+                    window.location.href = '/redirect-to-django';
+                });
+
+                card.appendChild(name);
+                card.appendChild(genre);
+                card.appendChild(age);
+                card.appendChild(country);
+                card.appendChild(followers);
+                card.appendChild(button);
+
+                resultsContainer.appendChild(card);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

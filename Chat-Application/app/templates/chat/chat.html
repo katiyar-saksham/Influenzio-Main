@@ -1,0 +1,256 @@
+{% extends 'chat/base.html' %}
+{% block style %}
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #090014;
+        flex-direction: column;
+    }
+
+    .logo {
+        /* width: 100%; */
+        /* height: 50%; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .container {
+        border: 2px solid rgb(36, 31, 43);
+        width: 100%;
+        max-width: 700px;
+        /* margin: auto; */
+        padding: 0rem 1rem;
+        /* margin-top: 100px; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chat-box {
+        width: 100%;
+        height: 400px;
+        padding: 10px;
+        background: #140023;
+        color: white;
+        overflow-y: auto;
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+    }
+
+    .message1 {
+        color: white;
+        margin: 2px 0;
+        padding-left: 3px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        left: 0;
+    }
+
+    .message2 {
+        color: white;
+        margin: 5px 0;
+        padding-right: 3px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .message1 span {
+        max-width: 90%;
+        width: fit-content;
+        padding: 10px;
+        font-size: 15px;
+        background: rgb(54, 54, 54);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .message2 span {
+        max-width: 90%;
+        width: fit-content;
+        padding: 10px;
+        font-size: 15px;
+        background: #6454af;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .message1 span span {
+        float: left;
+        font-size: 10px;
+        padding: 0px;
+    }
+
+    .message2 span span {
+        float: right;
+        font-size: 10px;
+        padding: 0px;
+    }
+
+    .input-content {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 10px;
+    }
+
+    input:first-child {
+        width: 79%;
+        padding: 10px;
+    }
+
+    input:first-child:focus {
+        outline: none;
+    }
+
+    input:nth-child(2) {
+        width: 20%;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        background: #7343ec;
+        font-size: 15px;
+        color: white;
+    }
+
+    #user-name {
+        background: #703BF7;
+        color: white;
+        padding: 10px;
+        font-size: 25px;
+        text-align: left;
+        width: 100%;
+        margin: 15px 5px;
+        border-radius: 5px;
+    }
+
+    .btn-box {
+        gap: 2rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-box button {
+        font-size: 15px;
+        width: 8rem;
+        font-weight: 500;
+        text-transform: capitalize;
+        padding: 10px 15px;
+        margin-bottom: 1rem;
+        background: transparent;
+        color: white;
+        border-radius: 50px;
+        position: relative;
+        display: inline-block;
+        border: 1px solid transparent;
+        background-image: linear-gradient(#000, #000),
+            /* Inner button background */
+            linear-gradient(90deg, #8d73ff, #a66cc3);
+        /* Gradient border */
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        box-shadow:
+            0 0 10px 1px rgba(0, 0, 0, 0.2),
+            0 0 10px 1px rgba(141, 115, 255, 0.242),
+            0 0 10px 1px rgba(195, 108, 191, 0.227);
+        transition: all 0.3s ease;
+    }
+
+    .btn-box button:hover {
+        box-shadow:
+            0 0 10px 1px rgba(102, 102, 102, 0.593),
+            0 0 10px 1px rgba(47, 0, 255, 0.729),
+            0 0 10px 1px rgba(255, 0, 242, 0.651);
+    }
+</style>
+
+
+{% endblock %}
+{% block content %}
+
+<div class="logo">
+    <img src="logo.svg" alt="logo">
+</div>
+
+<div class="container">
+    <span id="user-name">{{receiver}}</span>
+    <div class="chat-box">
+        {% for message in old_messages %}
+        {% if message.sender == request.user %}
+        <div class="message2"><span><span>{{message.sender}}</span><br>{{message.text}}</span></div>
+        {% else %}
+        <div class="message1"><span><span>{{message.sender}}</span><br>{{message.text}}</span></div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <form action="" class="input-content">
+        <input type="text" name="message" id="message" required placeholder="Enter you message here">
+        <input type="submit" value="Send" class="btn">
+    </form>
+    <div class="btn-box">
+        <a href=""><button>Payment</button></a>
+        <a href="{% url 'users' %}"><button>Back</button></a>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
+{% block js %}
+<script>
+    const url = 'ws://localhost:8000/ws' + window.location.pathname
+    console.log(url)
+    const ws = new WebSocket(url)
+    const user = document.getElementById('user-name').innerHTML
+    ws.onopen = (event) => {
+        console.log("connection opened")
+    }
+
+    ws.onmessage = function (e) {
+        console.log(e)
+        console.log(e.data)
+        console.log("message received")
+        const data = JSON.parse(e.data);
+        if (data.username != user) {
+            document.querySelector('.chat-box').innerHTML += `<div class="message2"><span><span>${data.username}</span><br> ${data.text}</span></div>`
+        }
+        else {
+            document.querySelector('.chat-box').innerHTML += `<div class="message1"><span><span>${data.username}</span><br> ${data.text}</span></div>`
+        }
+
+    };
+
+    ws.onclose = (event) => {
+        console.log(event)
+        console.error("connection closed")
+    }
+
+    ws.onerror = (event) => {
+        console.log(event)
+        console.log("connection error")
+    }
+
+    const form = document.getElementsByTagName('form')[0]
+    form.addEventListener('submit', sendMessage)
+
+    function sendMessage(e) {
+        if (e.preventDefault) e.preventDefault()
+        ws.send(document.getElementById('message').value)
+        document.getElementById('message').value = ""
+    }
+</script>
+{% endblock %}

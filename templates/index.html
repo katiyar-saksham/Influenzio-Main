@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Influenzio</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{url_for('static',filename='favicon.png')}}"
+    />
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{url_for('static',filename='favicon.png')}}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "XvXNUn51H7mAFId25",
+        });
+      })();
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="header-navbar">
+        <div class="logo">
+          <a href="#home"
+            ><img
+              src="{{url_for('static',filename='inline.svg')}}"
+              alt="influenzio"
+          /></a>
+        </div>
+        <div class="nav-lists">
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#influencer">Influencer</a></li>
+            <li><a href="#aboutus">About Us</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="contactus" id="#contact">
+          <ul>
+            <li><button>Contact Us</button></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- --------------hero------------- -->
+    <main>
+      <section class="home" id="home">
+        <div class="container">
+          <div class="content_left">
+            <div class="sub_heading">Get Traffic That Converts.</div>
+            <div class="heading">
+              <h1>
+                Find
+                <img src="{{url_for('static',filename='search.svg')}}" alt="" />
+                Influencers
+                <img src="{{url_for('static',filename='people.svg')}}" alt="" />
+                to <span class="gradient_text">collaborate</span> with
+                <input
+                  type="text"
+                  placeholder="SEARCH"
+                  id="search-bar"
+                  disabled
+                />
+              </h1>
+            </div>
+            <div class="stats">
+              <div class="box border_default">
+                <h1>200+</h1>
+                <p>Happy Customers</p>
+              </div>
+              <div class="box border_default">
+                <h1>10K+</h1>
+                <p>Property For Clients</p>
+              </div>
+              <div class="box border_default">
+                <h1>16+</h1>
+                <p>Years of Experience</p>
+              </div>
+            </div>
+            <div class="btn">
+              <a href="/influencer-login"
+                ><button src="/influencer-login" class="gradient-border-button">
+                  for influencer
+                </button></a
+              >
+              <a href="/brand-login"
+                ><button src="/brand-login" class="gradient-border-button">
+                  for brands
+                </button></a
+              >
+            </div>
+          </div>
+          <div class="content_right">
+            <video muted autoplay loop src="/static/home_video.mp4"></video>
+            <!-- <img src="{{url_for('static',filename='home-right.svg')}}" /> -->
+          </div>
+        </div>
+
+        <div class="home_footer">
+          <div class="headings">
+            <h1>sony</h1>
+            <h1>nike</h1>
+            <h1>beyoung</h1>
+            <h1>airbnb</h1>
+            <h1>lakme</h1>
+            <h1>casio</h1>
+            <h1>tripadvisor</h1>
+            <h1></h1>
+          </div>
+          <br />
+          <!-- Duplicate content for seamless loop -->
+          <div class="headings">
+            <h1>sony</h1>
+            <h1>nike</h1>
+            <h1>beyoung</h1>
+            <h1>airbnb</h1>
+            <h1>lakme</h1>
+            <h1>casio</h1>
+            <h1>tripadvisor</h1>
+            <h1></h1>
+          </div>
+          <br />
+          <!-- Duplicate content for seamless loop -->
+          <div class="headings">
+            <h1>sony</h1>
+            <h1>nike</h1>
+            <h1>beyoung</h1>
+            <h1>airbnb</h1>
+            <h1>lakme</h1>
+            <h1>casio</h1>
+            <h1>tripadvisor</h1>
+            <h1></h1>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <main>
+      <section id="influencer">
+        <div class="title">
+          <p class="subtitle">
+            <img
+              class="star_icon"
+              src="{{url_for('static',filename='star.svg')}}"
+            />Find the Perfect Collab
+          </p>
+          <h1 class="title">
+            Featured <span class="gradient_text">Influencer</span>
+          </h1>
+          <p class="description">
+            From dance challenges to comedy skits, all influencers are shaping
+            the culture of the internet every day. Ride the wave of viral
+            content with a platform that helps you reduce the vast sea of
+            influencers into a manageable pool of top creators.
+          </p>
+        </div>
+        <div class="slider-cards">
+          <div class="wrapper">
+            <div class="arrow left">
+              <img
+                src="{{url_for('static',filename='arrow_back_ios_25dp_FFFFFF_FILL1_wght400_GRAD0_opsz24.svg')}}"
+                style="margin: auto; text-align: center"
+              />
+            </div>
+            <ul class="carousel">
+              <li class="card">
+                <div class="img">
+                  <img
+                    src="https://c.ndtvimg.com/2024-03/c9u6akao_exclusive-best-audience-ever-nischay-malhan-on-his-national-creators-award-win_625x300_11_March_24.jpg?downsize=420:*"
+                    alt="img"
+                    draggable="false"
+                  />
+                </div>
+                <div class="details">
+                  <div class="left_card">
+                    <div class="name">
+                      <h4 style="padding-top: 5px">Nischay Malhan</h4>
+                      <img
+                        src="{{url_for('static',filename='verified_25dp_FFFFFF_FILL1_wght400_GRAD0_opsz24 (1).svg')}}"
+                      />
+                    </div>
+                    <p class="sub_title">Delhi, India</p>
+                    <div class="social-icons"></div>
+                    <p class="sub_title">price</p>
+                    <br /><br />
+                    <p class="price">Rs 10,00,000</p>
+                  </div>
+                  <div class="rigt_card">
+                    <h4 class="followers">23 M</h4>
+                    <p class="sub_title">Followers</p>
+                    <div class="category border_default">Gaming</div>
+                    <button class="btn gradient-border-button">Hire Me</button>
+                  </div>
+                </div>
+              </li>
+              <li class="card">
+                <div class="img">
+                  <img
+                    src="https://cdn.dnaindia.com/sites/default/files/styles/full/public/2020/05/16/906281-carry-minati.jpg"
+                    alt="img"
+                    draggable="false"
+                  />
+                </div>
+                <div class="details">
+                  <div class="left_card">
+                    <div class="name">
+                      <h4 style="padding-top: 5px">Ajay Nagar</h4>
+                      <img
+                        src="{{url_for('static',filename='verified_25dp_FFFFFF_FILL1_wght400_GRAD0_opsz24 (1).svg')}}"
+                      />
+                    </div>
+                    <p class="sub_title">Faridabad, Haryana</p>
+                    <div class="social-icons"></div>
+                    <p class="sub_title">price</p>
+                    <br /><br />
+                    <p class="price">Rs 15,00,000</p>
+                  </div>
+                  <div class="rigt_card">
+                    <h4 class="followers">45 M</h4>
+                    <p class="sub_title">Followers</p>
+                    <div class="category border_default">Entertainment</div>
+                    <button class="btn gradient-border-button">Hire Me</button>
+                  </div>
+                </div>
+              </li>
+              <li class="card">
+                <div class="img">
+                  <img
+                    src="https://wp.missmalini.com/wp-content/uploads/2021/02/BeFunky-collage-1-1-8.jpg"
+                    alt="img"
+                    draggable="false"
+                  />
+                </div>
+                <div class="details">
+                  <div class="left_card">
+                    <div class="name">
+                      <h4 style="padding-top: 5px">Komal Pandey</h4>
+                      <img
+                        src="{{url_for('static',filename='verified_25dp_FFFFFF_FILL1_wght400_GRAD0_opsz24 (1).svg')}}"
+                      />
+                    </div>
+                    <p class="sub_title">Mumbai, India</p>
+                    <div class="social-icons"></div>
+                    <p class="sub_title">price</p>
+                    <br />
+                    <p class="price">Rs 4,00,000</p>
+                  </div>
+                  <div class="rigt_card">
+                    <h4 class="followers">2 M</h4>
+                    <p class="sub_title">Followers</p>
+                    <div class="category border_default">Fashion</div>
+                    <button class="btn gradient-border-button">Hire Me</button>
+                  </div>
+                </div>
+              </li>
+              <li class="card">
+                <div class="img">
+                  <img
+                    src="https://i0.wp.com/ankurwarikoo.com/wp-content/uploads/2022/07/wujxcsjsnngfttcuebk8.webp?fit=1316%2C722&ssl=1"
+                    alt="img"
+                    draggable="false"
+                  />
+                </div>
+                <div class="details">
+                  <div class="left_card">
+                    <div class="name">
+                      <h4 style="padding-top: 5px">Ankur warikoo</h4>
+                      <img
+                        src="{{url_for('static',filename='verified_25dp_FFFFFF_FILL1_wght400_GRAD0_opsz24 (1).svg')}}"
+                      />
+                    </div>
+                    <p class="sub_title">Faridabad, India</p>
+                    <div class="social-icons"></div>
+                    <p class="sub_title">price</p>
+                    <br />
+                    <p class="price">Rs 9,00,000</p>
+                  </div>
+                  <div class="rigt_card">
+                    <h4 class="followers">4 M</h4>
+                    <p class="sub_title">Followers</p>
+                    <div class="category border_default">Business</div>
+                    <button class="btn gradient-border-button">Hire Me</button>
+                  </div>
+                </div>
+              </li>
+              <li class="card">
+                <div class="img">
+                  <img
+                    src="https://blackhattalent.com/wp-content/uploads/2023/08/Namrata-Purohit_5-Copy.jpg"
+                    alt="img"
+                    draggable="false"
+                  />
+                </div>
+                <div class="details">
+                  <div class="left_card">
+                    <div class="name">
+                      <h4 style="padding-top: 5px">Nmrata Purohit</h4>
+                      <img
+                        src="{{url_for('static',filename='verified_25dp_FFFFFF_FILL1_wght400_GRAD0_opsz24 (1).svg')}}"
+                      />
+                    </div>
+                    <p class="sub_title">Mumbai, India</p>
+                    <div class="social-icons"></div>
+                    <p class="sub_title">price</p>
+                    <br />
+                    <p class="price">Rs 10,000</p>
+                  </div>
+                  <div class="rigt_card">
+                    <h4 class="followers">5 L</h4>
+                    <p class="sub_title">Followers</p>
+                    <div class="category border_default">Fitness</div>
+                    <button class="btn gradient-border-button">Hire Me</button>
+                  </div>
+                </div>
+              </li>
+              <li class="card">
+                <div class="img">
+                  <img
+                    src="https://s3.ap-southeast-1.amazonaws.com/images.asianage.com/images/aa-Cover-va483gh4c10nf3ejf26lk0en30-20190709172953.Medi.jpeg"
+                    alt="img"
+                    draggable="false"
+                  />
+                </div>
+                <div class="details">
+                  <div class="left_card">
+                    <div class="name">
+                      <h4 style="padding-top: 5px">Parul Garg</h4>
+                      <img
+                        src="{{url_for('static',filename='verified_25dp_FFFFFF_FILL1_wght400_GRAD0_opsz24 (1).svg')}}"
+                      />
+                    </div>
+                    <p class="sub_title">Gurugram, India</p>
+                    <div class="social-icons"></div>
+                    <p class="sub_title">price</p>
+                    <br />
+                    <p class="price">Rs 1,50,000</p>
+                  </div>
+                  <div class="rigt_card">
+                    <h4 class="followers">10 M</h4>
+                    <p class="sub_title">Followers</p>
+                    <div class="category border_default">Makeup</div>
+                    <button class="btn gradient-border-button">Hire Me</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="arrow right">
+              <img
+                src="{{url_for('static',filename='arrow_forward_ios_25dp_FFFFFF_FILL1_wght400_GRAD0_opsz24.svg')}}"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- how do we work-->
+    <main>
+      <section class="how" id="aboutus">
+        <div class="title">
+          <p class="subtitle">
+            <img
+              class="star_icon"
+              src="{{url_for('static',filename='star.svg')}}"
+            />our process explained !
+          </p>
+          <h1 class="title">
+            How do we <span class="gradient_text">Work</span>?
+          </h1>
+          <p class="description">
+            Enabling influencers to showcase portfolios and get perfect brand
+            matches, while brands can discover creators, manage campaigns, and
+            track performance efficiently.
+          </p>
+          <div class="parent">
+            <div class="work">
+              <div class="div1 border_default">
+                <h4>Dashboard</h4>
+                <p>
+                  Our platform lets influencers and brands create detailed
+                  profiles and personalized dashboards, enabling seamless
+                  matchmaking and efficient collaboration. Discover the perfect
+                  partnerships, and track performance—all in one place.
+                </p>
+              </div>
+              <div class="div2 border_default">
+                <h4>Categories</h4>
+                <p>
+                  Brands can effortlessly discover influencers tailored to their
+                  specific requirements, including budget, genre, influencer
+                  type, region, and age group. Our platform simplifies the
+                  search process, ensuring the perfect match for your campaign.
+                </p>
+              </div>
+              <div class="div3 border_default">
+                <h4>Help Influencers</h4>
+                <p>
+                  Get discovered by brands and startups that align with your
+                  niche.Simplify the process of finding and securing brand
+                  deals.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--testimonials-->
+    <main>
+      <section class="Testimonials" id="testimonials">
+        <div class="title">
+          <p class="subtitle">
+            <img
+              class="star_icon"
+              src="{{url_for('static',filename='star.svg')}}"
+            />we are trusted !
+          </p>
+          <h1 class="title">
+            What Our <span class="gradient_text">Clients</span> Say
+          </h1>
+          <p class="description">
+            Read the success stories and heartfelt testimonials from our valued
+            clients. Discover why they chose influenzio for their collabration
+            needs.
+          </p>
+        </div>
+        <div class="testimonials">
+          <div class="item border_default">
+            <div class="profile">
+              <img
+                src="https://c.ndtvimg.com/2024-03/c9u6akao_exclusive-best-audience-ever-nischay-malhan-on-his-national-creators-award-win_625x300_11_March_24.jpg?downsize=420:*"
+                alt="img"
+                draggable="false"
+              />
+              <div class="information">
+                <!-- <div class="stars">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </div> -->
+                <p>Nischay Malhan</p>
+                <span>Content Creator</span>
+              </div>
+            </div>
+            <p>
+              Influenzio has redefined how I collaborate with brands. The
+              platform's smart matching system connects me with brands that
+              truly resonate with my audience. It's made the process seamless
+              and impactful, letting me focus on creating authentic
+              content. Influenzio has redefined how I collaborate with brands.
+            </p>
+            <div class="icon">
+              <i class="fa fa-quote-right" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <!-- Single Ends -->
+
+          <div class="item border_default">
+            <div class="profile">
+              <img
+                src="https://cdn.dnaindia.com/sites/default/files/styles/full/public/2020/05/16/906281-carry-minati.jpg"
+                alt="img"
+                draggable="false"
+              />
+              <div class="information">
+                <!-- <div class="stars">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </div> -->
+                <p>Ajay Nagar</p>
+                <span>Entertainment</span>
+              </div>
+            </div>
+            <p>
+              It ensures I work with companies that align with my style and
+              audience, allowing me to stay authentic while delivering impactful
+              campaigns. The platform's intuitive interface and support team
+              have made the entire process smooth. It's a must-have tool for
+              creators looking to scale their partnership.
+            </p>
+            <div class="icon">
+              <i class="fa fa-quote-right" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="item border_default">
+            <div class="profile">
+              <img
+                src="https://wp.missmalini.com/wp-content/uploads/2021/02/BeFunky-collage-1-1-8.jpg"
+                alt="img"
+                draggable="false"
+              />
+              <div class="information">
+                <!-- <div class="stars">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </div> -->
+                <p>Komal Pandey</p>
+                <span>Fashion</span>
+              </div>
+            </div>
+            <p>
+              Influenzio has completely changed how I approach collaborations.
+              The platform connects me with brands that align perfectly with my
+              personal style and audience, ensuring every partnership feels
+              authentic. Its seamless interface and support make managing
+              campaigns a breeze.
+            </p>
+            <div class="icon">
+              <i class="fa fa-quote-right" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--contact us-->
+    <main>
+      <section class="contact" id="contact">
+        <div class="title">
+          <p class="subtitle">
+            <img
+              class="star_icon"
+              src="{{url_for('static',filename='star.svg')}}"
+            />we are excited to contact you
+          </p>
+          <h1 class="title"><span class="gradient_text">Contact</span> Us</h1>
+          <p class="description">
+            We're excited to collaborate with you! Whether you're a brand
+            looking to amplify your message or an influencer eager to partner
+            with exciting opportunities, we'd love to hear from you.
+          </p>
+        </div>
+        <div class="container2">
+          <form
+            class="form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+          >
+            <input
+              type="hidden"
+              name="access_key"
+              value="9ab857478-2f26-4531-af99-286b341d8bf8"
+            />
+            <div class="field_flex">
+              <label for="email" class="label_field">Email</label>
+              <input
+                class="text_box"
+                type="text"
+                id="email"
+                name="email"
+                required
+              />
+            </div>
+            <div class="field_flex">
+              <label for="message" class="label_field">message</label>
+              <textarea id="message" name="message" rows="4" cols="67" required>
+              </textarea>
+            </div>
+            <div class="submit">
+              <button class="gradient-border-button">Submit</button>
+            </div>
+            <div class="width">
+              <!-- <button type="submit" class="btn_active btn_end"></button> -->
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!--footer-->
+    <main>
+      <section class="footer">
+        <div class="foot">
+          <div class="left_side">
+            <a href="#home"
+              ><img src="{{url_for('static',filename='2line.png')}}" alt=""
+            /></a>
+            <div>@2023 influenzio. All Rights Reserved. Terms & Condition</div>
+          </div>
+          <div class="right_side">
+            <ul class="sub">
+              <li>
+                <!-- Home -->
+                <ul class="inner">
+                  <li><a href="#home">Home</a></li>
+                  <li><a href="#influencer">Influencer</a></li>
+                  <li><a href="#aboutus">About Us</a></li>
+                  <li><a href="#testimonials">Testimonials</a></li>
+                  <li><a href="#contact">Contact Us</a></li>
+                  <!-- <li>Testimonials</li> -->
+                </ul>
+              </li>
+              <!-- <li>About us</li> -->
+              <li>
+                <!-- Features -->
+                <ul class="inner">
+                  <li>Dashboard</li>
+                  <li>Categories</li>
+                </ul>
+              </li>
+              <!-- <li>Testimonials</li>
+              <li>Contact Us</li> -->
+            </ul>
+            <div class="follow_us">
+              <a href="https://youtube.com">
+                <i
+                  class="fa-brands fa-youtube fa-xl"
+                  style="color: #e61429"
+                ></i>
+              </a>
+              <a href="https://x.com">
+                <i
+                  class="fa-brands fa-twitter fa-xl"
+                  style="color: #f9fafb"
+                ></i>
+              </a>
+              <a href="https://linkedIn.com">
+                <i
+                  class="fa-brands fa-linkedin fa-xl"
+                  style="color: #1b63de"
+                ></i
+              ></a>
+              <a href="https://instagram.com">
+                <i
+                  class="fa-brands fa-instagram fa-xl"
+                  style="color: #e42f7e"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="{{url_for('static',filename='script.js')}}"></script>
+  </body>
+</html>

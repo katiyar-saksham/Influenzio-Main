@@ -1,0 +1,38 @@
+{% extends 'chat/base.html' %}
+{% block style %}
+<style>
+    .container{
+        display: flex;
+        width: 100%;
+        height: 90vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .heading{
+        font-size: 5rem;
+    }
+
+    .btn-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="heading">Chat With Buddy!</h1>
+    <p>This is a simple chat-application where users can create account and chat with their friends in <mark>real-time</mark>.</p>
+    <p>This application is developed using <mark>Django</mark>. For real-time communication Websocket Connections are implemented using <mark>django-channels</mark></p>
+    <div class="btn-box">
+        <a href="{% url 'register' %}"><button>Register</button></a>
+        <a href="{% url 'login' %}"><button>Login</button></a>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+{% endblock %}

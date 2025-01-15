@@ -1,0 +1,36 @@
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const socket = io();
+
+        const room = "{{ brand_email }}_{{ influencer_email }}"; // Use dynamic room name
+        const user = "{{ user_email }}";
+
+        socket.emit('join', { room, user, brand_email: "{{ brand_email }}", influencer_email: "{{ influencer_email }}" });
+
+        const chatBox = document.getElementById('chat-box');
+        const sendBtn = document.getElementById('send-btn');
+        const messageInput = document.getElementById('message-input');
+
+        // Listen for messages
+        socket.on('message', data => {
+            const msgDiv = document.createElement('div');
+            msgDiv.textContent = ${data.user}: ${data.message};
+            chatBox.appendChild(msgDiv);
+        });
+
+        // Send messages
+        sendBtn.addEventListener('click', () => {
+            const message = messageInput.value;
+            if (message.trim() !== '') {
+                socket.emit('send_message', {
+                    room,
+                    user,
+                    message,
+                    brand_email: "{{ brand_email }}",
+                    influencer_email: "{{ influencer_email }}"
+                });
+                messageInput.value = '';
+            }
+        });
+    });
+</script>

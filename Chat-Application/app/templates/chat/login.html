@@ -1,0 +1,99 @@
+{% extends 'chat/base.html' %}
+{% block style %}
+<style>
+    body{
+        background-color:  #090014;;
+    }
+    .gradient_text{
+    background: linear-gradient(90deg,#8D73FF 20%,#C53CCC 80%);
+    /* -webkit-background-clip: text; */
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin:1rem auto;
+    }
+    .subtitle {
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #8d73ff;
+    text-transform: uppercase;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        border: 2px solid rgb(36, 31, 43);
+        border-radius: 5px;
+        margin-top: 50px;
+        background-color: #140023;;
+    }
+    label{
+
+        letter-spacing: 2px;
+        color: #8d73ff;
+        font-size: 1.2rem;
+        margin: 10px 0;
+    }
+    input{
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 1.5rem;
+    }
+    button{
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 5px;
+        background: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+     button {
+        margin: 1rem auto;
+        font-size: 15px;
+        width: 8rem;
+        font-weight: 500;
+        text-transform: capitalize;
+        padding: 10px 15px;
+        background: transparent;
+        color: white;
+        border-radius: 50px;
+        position: relative;
+        display: inline-block;
+        border: 1px solid transparent;
+        background-image: linear-gradient(#000, #000),
+            /* Inner button background */
+            linear-gradient(90deg, #8d73ff, #a66cc3);
+        /* Gradient border */
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        box-shadow:
+            0 0 10px 1px rgba(0, 0, 0, 0.2),
+            0 0 10px 1px rgba(141, 115, 255, 0.242),
+            0 0 10px 1px rgba(195, 108, 191, 0.227);
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        box-shadow:
+            0 0 10px 1px rgba(102, 102, 102, 0.593),
+            0 0 10px 1px rgba(47, 0, 255, 0.729),
+            0 0 10px 1px rgba(255, 0, 242, 0.651);
+    }
+</style>
+{% endblock %}
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <h1 class="gradient_text">Verify that it's you!</h1>
+    <label>Username</label>
+    <input type="text" name="username" id="">
+    <label>Password</label>
+    <input type="password" name="password" id="">
+    <button type="submit" >Login</button>
+</form>
+{% endblock %}

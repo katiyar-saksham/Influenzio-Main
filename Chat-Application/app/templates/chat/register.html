@@ -1,0 +1,49 @@
+{% extends 'chat/base.html' %}
+{% block style %}
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        margin-top: 50px;
+    }
+
+    label {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    input {
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 1.5rem;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 5px;
+        background: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <h1>Create your account</h1>
+    <label>Username</label>
+    <input type="text" name="username" id="">
+    <label>Password</label>
+    <input type="password" name="password" id="">
+    <button type="submit">Register</button>
+</form>
+{% endblock %}
